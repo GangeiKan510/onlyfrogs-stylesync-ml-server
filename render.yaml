@@ -1,0 +1,22 @@
+databases:
+  - name: stylesyncdb
+    plan: free
+    databaseName: stylesync
+    user: stylesync
+
+services:
+  - type: web
+    plan: free
+    name: stylesync
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn stylesync.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: stylesyncdb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
