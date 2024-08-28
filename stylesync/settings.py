@@ -21,6 +21,16 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+FIREBASE_CONFIG = {
+    "apiKey": os.getenv("EXPO_PUBLIC_FIREBASE_API_KEY"),
+    "authDomain": os.getenv("EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN"),
+    "projectId": os.getenv("EXPO_PUBLIC_FIREBASE_PROJECT_ID"),
+    "storageBucket": os.getenv("EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET"),
+    "messagingSenderId": os.getenv("EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID"),
+    "appId": os.getenv("EXPO_PUBLIC_FIREBASE_APP_ID"),
+    "measurementId": os.getenv("EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID"),
+    "databaseURL": ""
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
