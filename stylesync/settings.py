@@ -38,9 +38,9 @@ FIREBASE_CONFIG = {
 SECRET_KEY = os.environ.get(
     'SECRET_KEY', default='django-insecure-%9+#8yu!req7ho+p2hjwj!kv%4u8!ssj5a78r@_t70gp7q14d2')
 
-DEBUG = 'RENDER' not in os.environ
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['onlyfrogs-stylesync-ml-server-production.up.railway.app']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
