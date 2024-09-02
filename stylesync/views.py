@@ -25,7 +25,6 @@ storage = firebase.storage()
 
 def home(request):
     return HttpResponse("StyleSync Django Server")
-print("chore: integration of discord to github webook")
 
 @csrf_exempt
 def remove_background_view(request):
