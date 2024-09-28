@@ -47,5 +47,5 @@ Thumbs.db
 .build/
 .deploy/
 
-venv
+venv/
 google-cloud-sdk
