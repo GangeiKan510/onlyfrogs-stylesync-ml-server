@@ -12,6 +12,9 @@ __pycache__/
 db.sqlite3
 /media/
 staticfiles/
+/staticfiles/
+/staticfiles_collected/
+/static/
 
 # Environment and local settings
 *.env
