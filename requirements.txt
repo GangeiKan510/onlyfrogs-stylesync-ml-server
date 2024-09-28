@@ -47,7 +47,7 @@ psycopg2-binary==2.9.9
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
 pycparser==2.22
-pycryptodome
+pycryptodome==3.20.0 
 pyheif==0.8.0
 PyMatting==1.1.12
 pyparsing==3.1.4
