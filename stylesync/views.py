@@ -56,7 +56,7 @@ def remove_background_view(request):
             filename = f"output_images/{datetime.now().strftime('%Y%m%d%H%M%S')}.png"
             storage.child(filename).put(output_image_io)
 
-            file_url = storage.child(filename).get_url(None)
+            file_url = storage.child(filename).get_url()
 
             return JsonResponse({
                 'message': 'Image processed and uploaded successfully.',
@@ -109,14 +109,21 @@ def get_skin_tone(image_url):
     season, sub_season = classify_season_and_sub_season(skin_tone_rgb)
 
     complement_colors = []
-    for i in range(7):
+    for i in range(12):
         complementary_hue = (cv2.cvtColor(
-            np.uint8([[skin_tone_rgb]]), cv2.COLOR_BGR2HSV)[0][0][0] + (i * 30)) % 180
+            np.uint8([[skin_tone_rgb]]), cv2.COLOR_BGR2HSV)[0][0][0] + (i * 15)) % 180
+
+        saturation = np.random.randint(70, 180)
+        value = np.random.randint(100, 250)
+
         complement_color = cv2.cvtColor(np.uint8(
-            [[[complementary_hue, 255, 255]]]), cv2.COLOR_HSV2BGR)[0][0]
+            [[[complementary_hue, saturation, value]]]), cv2.COLOR_HSV2BGR)[0][0]
         complement_color_hex = "#{:02x}{:02x}{:02x}".format(
             int(complement_color[2]), int(complement_color[1]), int(complement_color[0]))
         complement_colors.append(complement_color_hex)
+
+    neutral_colors = ['#000000', '#808080', '#A9A9A9', '#D3D3D3']
+    complement_colors.extend(neutral_colors)
 
     return {
         "skin_tone": skin_tone_hex,
